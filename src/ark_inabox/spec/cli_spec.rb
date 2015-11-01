@@ -65,4 +65,10 @@ describe ArkInabox::CLI do
     end
 
   end
+
+  describe 'configuration' do
+    it 'exposes a config object' do
+      expect(@cli).to respond_to :config
+    end
+  end
 end

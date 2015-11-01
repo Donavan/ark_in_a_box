@@ -1,10 +1,13 @@
 require 'fileutils'
+require 'yaml'
 
 module ArkInabox
   class CLI
     ARK_ROOT_KEY ='ARK_INABOX_ROOT'
     DEFAULT_ROOT = '~/.ark_inabox'
     @@root_folder = nil
+
+    attr_reader :config
 
     def self.root_folder
       return @@root_folder unless @@root_folder.nil?
@@ -24,6 +27,10 @@ module ArkInabox
     private
     def internal_support_path
       File.expand_path('../../support', __FILE__)
+    end
+
+    def load_config
+      @config = YAML::load "#{CLI::root_folder}/config.yml"
     end
   end
 end
