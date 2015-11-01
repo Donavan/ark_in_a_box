@@ -1,3 +1,28 @@
 #!/usr/bin/env ruby
 
-require "ark_inabox"
+require 'ark_inabox'
+require 'ark_inabox/cli'
+require 'thor'
+
+class App < Thor
+  class_option :verbose, :type => :boolean
+  class_option :root, :type => :boolean
+
+  desc 'init', 'create ark_inabox support folder'
+  <<-LONGDESC
+    `ark_inabox init` will create the support folders nessesary for ark_inabox to function.
+    The --root option can be used to control where this folder resides, if not given the
+    environment variable ARK_INABOX_ROOT will be used, that variable is empty the default
+    root folder '~/.ark_inabox' will be used.
+  LONGDESC
+  def init()
+    @cli.command_init
+  end
+
+
+  def initialize()
+    @cli = ArkInabox::CLI.new()
+  end
+end
+
+App.start(ARGV)

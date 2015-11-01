@@ -1,0 +1,1 @@
+The contents of this folder will be used as the root folder for new arks.
