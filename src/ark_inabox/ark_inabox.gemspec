@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Donavan Stanley']
   spec.email         = ['donavan.stanley@gmail.com']
 
-  spec.summary       = %q{Tools for working with Dockerized Ark servers.}
+  spec.summary       = 'Tools for working with Dockerized Ark servers.'
   spec.homepage      = 'https://github.com/Donavan/ark_in_a_box'
   spec.license       = 'MIT'
 
