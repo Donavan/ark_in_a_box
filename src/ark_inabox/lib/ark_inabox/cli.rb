@@ -9,8 +9,6 @@ module ArkInabox
     DEFAULT_ROOT = '~/.ark_inabox'
     @@root_folder = nil
 
-    attr_reader :config
-
     def self.root_folder
       return @@root_folder unless @@root_folder.nil?
       ENV[ARK_ROOT_KEY].nil? ? DEFAULT_ROOT : ENV[ARK_ROOT_KEY]
@@ -25,6 +23,11 @@ module ArkInabox
       FileUtils.cp_r "#{internal_support_path}/new_ark_files", "#{CLI.root_folder}/new_ark_files"
     end
 
+    def config
+      @config ||= load_config
+      @config
+    end
+
     private
 
     def internal_support_path
@@ -32,7 +35,7 @@ module ArkInabox
     end
 
     def load_config
-      @config = YAML.load "#{CLI.root_folder}/config.yml"
+      YAML.load "#{CLI.root_folder}/config.yml"
     end
   end
 end

@@ -66,5 +66,9 @@ describe ArkInabox::CLI do
     it 'exposes a config object' do
       expect(@cli).to respond_to :config
     end
+
+    it 'loads the config file on demand' do
+      expect(@cli.config).not_to be_nil
+    end
   end
 end
