@@ -4,9 +4,10 @@ require 'ark_inabox'
 require 'ark_inabox/cli'
 require 'thor'
 
+# The ark_inabox application
 class App < Thor
-  class_option :verbose, :type => :boolean
-  class_option :root, :type => :boolean
+  class_option :verbose, type:  :boolean
+  class_option :root,    type:  :boolean
 
   desc 'init', 'create ark_inabox support folder'
   <<-LONGDESC
@@ -15,13 +16,12 @@ class App < Thor
     environment variable ARK_INABOX_ROOT will be used, that variable is empty the default
     root folder '~/.ark_inabox' will be used.
   LONGDESC
-  def init()
+  def init
     @cli.command_init
   end
 
-
-  def initialize()
-    @cli = ArkInabox::CLI.new()
+  def initialize
+    @cli = ArkInabox::CLI.new
   end
 end
 

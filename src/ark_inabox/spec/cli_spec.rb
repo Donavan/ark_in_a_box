@@ -8,7 +8,6 @@ describe ArkInabox::CLI do
     @cli = clazz.new
   end
 
-
   it 'exposes an init command' do
     expect(@cli).to respond_to(:init)
   end
@@ -21,7 +20,6 @@ describe ArkInabox::CLI do
     it 'exposes a class level root_folder setter' do
       expect(clazz).to respond_to(:root_folder=)
     end
-
 
     it 'returns the default folder if the root folder has not been set and no env variable exists' do
       expect(clazz.root_folder).to eq(ArkInabox::CLI::DEFAULT_ROOT)
@@ -36,17 +34,16 @@ describe ArkInabox::CLI do
 
     it 'returns folder it was set to if the root folder has been set' do
       some_value = 'value I set'
-      clazz.root_folder= some_value
+      clazz.root_folder = some_value
 
       expect(clazz.root_folder).to eq(some_value)
     end
-
   end
 
   describe 'project init' do
     it 'creates the support folder' do
       my_folder = './tmp/test_init'
-      clazz.root_folder= my_folder
+      clazz.root_folder = my_folder
 
       @cli.init
 
@@ -56,14 +53,13 @@ describe ArkInabox::CLI do
 
     it 'creates the new_ark_files folder' do
       my_folder = './tmp/test_init'
-      clazz.root_folder= my_folder
+      clazz.root_folder = my_folder
 
       @cli.init
 
       expect(File.exist?("#{my_folder}/new_ark_files")).to eq true
       FileUtils.rm_rf(my_folder)
     end
-
   end
 
   describe 'configuration' do
